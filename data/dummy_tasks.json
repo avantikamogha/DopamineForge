@@ -1,0 +1,148 @@
+[
+  {
+    "task_id": "001",
+    "task_name": "Morning Cardio",
+    "difficulty": 3,
+    "duration_mins": 30,
+    "category": "Physical",
+    "deadline": "2026-03-28T08:00:00Z",
+    "is_completed": true,
+    "energy_at_completion": 9
+  },
+  {
+    "task_id": "002",
+    "task_name": "Complex Coding Logic",
+    "difficulty": 5,
+    "duration_mins": 90,
+    "category": "Deep Work",
+    "deadline": "2026-03-28T10:30:00Z",
+    "is_completed": true,
+    "energy_at_completion": 8
+  },
+  {
+    "task_id": "003",
+    "task_name": "Email Cleanup",
+    "difficulty": 1,
+    "duration_mins": 20,
+    "category": "Admin",
+    "deadline": "2026-03-28T15:00:00Z",
+    "is_completed": true,
+    "energy_at_completion": 3
+  },
+  {
+    "task_id": "004",
+    "task_name": "Physics Lab Report",
+    "difficulty": 4,
+    "duration_mins": 60,
+    "category": "Deep Work",
+    "deadline": "2026-03-28T16:30:00Z",
+    "is_completed": false,
+    "energy_at_completion": null
+  },
+
+  {
+    "task_id":"005",
+    "task_name":"Morning Run",
+    "difficulty":3,"duration_mins":30,
+    "category":"Physical",
+    "deadline":"2026-03-27T06:30:00Z",
+    "is_completed":true,
+    "energy_at_completion":9
+  },
+
+  {
+    "task_id":"006",
+    "task_name":"DSA Practice",
+    "difficulty":5,
+    "duration_mins":90,
+    "category":"Deep Work",
+    "deadline":"2026-03-27T09:00:00Z",
+    "is_completed":true,
+    "energy_at_completion":8
+  },
+
+  {
+    "task_id":"007",
+    "task_name":"Reply Emails",
+    "difficulty":1,"duration_mins":20,
+    "category":"Admin",
+    "deadline":"2026-03-27T14:00:00Z",
+    "is_completed":true,
+    "energy_at_completion":3
+},
+  {
+    "task_id":"008",
+    "task_name":"Project Planning",
+    "difficulty":4,
+    "duration_mins":60,
+    "category":"Deep Work",
+    "deadline":"2026-03-27T18:00:00Z",
+    "is_completed":true,
+    "energy_at_completion":6
+},
+
+  {
+    "task_id":"009",
+    "task_name":"Yoga",
+    "difficulty":2,
+    "duration_mins":25,
+    "category":"Physical",
+    "deadline":"2026-03-26T07:00:00Z",
+    "is_completed":true,
+    "energy_at_completion":8
+},
+  {"task_id":"010","task_name":"Write Blog","difficulty":4,"duration_mins":70,"category":"Creative","deadline":"2026-03-26T10:00:00Z","is_completed":true,"energy_at_completion":7},
+  {"task_id":"011","task_name":"File Organization","difficulty":1,"duration_mins":15,"category":"Admin","deadline":"2026-03-26T15:30:00Z","is_completed":true,"energy_at_completion":3},
+  {"task_id":"012","task_name":"UI Design","difficulty":3,"duration_mins":50,"category":"Creative","deadline":"2026-03-26T20:00:00Z","is_completed":true,"energy_at_completion":6},
+
+  {"task_id":"013","task_name":"Gym Workout","difficulty":4,"duration_mins":60,"category":"Physical","deadline":"2026-03-25T06:00:00Z","is_completed":true,"energy_at_completion":9},
+  {"task_id":"014","task_name":"Algorithm Revision","difficulty":5,"duration_mins":80,"category":"Deep Work","deadline":"2026-03-25T09:30:00Z","is_completed":true,"energy_at_completion":8},
+  {"task_id":"015","task_name":"Check Messages","difficulty":1,"duration_mins":10,"category":"Admin","deadline":"2026-03-25T13:30:00Z","is_completed":true,"energy_at_completion":2},
+  {"task_id":"016","task_name":"Read Book","difficulty":2,"duration_mins":40,"category":"Learning","deadline":"2026-03-25T21:00:00Z","is_completed":true,"energy_at_completion":5},
+
+  {"task_id":"017","task_name":"Stretching","difficulty":2,"duration_mins":20,"category":"Physical","deadline":"2026-03-24T07:30:00Z","is_completed":true,"energy_at_completion":7},
+  {"task_id":"018","task_name":"Backend Development","difficulty":5,"duration_mins":100,"category":"Deep Work","deadline":"2026-03-24T10:00:00Z","is_completed":true,"energy_at_completion":9},
+  {"task_id":"019","task_name":"Calendar Planning","difficulty":1,"duration_mins":15,"category":"Admin","deadline":"2026-03-24T14:00:00Z","is_completed":true,"energy_at_completion":3},
+  {"task_id":"020","task_name":"Watch Tutorial","difficulty":2,"duration_mins":45,"category":"Learning","deadline":"2026-03-24T19:00:00Z","is_completed":true,"energy_at_completion":5},
+
+  {"task_id":"021","task_name":"Cycling","difficulty":3,"duration_mins":35,"category":"Physical","deadline":"2026-03-23T06:45:00Z","is_completed":true,"energy_at_completion":8},
+  {"task_id":"022","task_name":"System Design","difficulty":5,"duration_mins":120,"category":"Deep Work","deadline":"2026-03-23T09:30:00Z","is_completed":true,"energy_at_completion":9},
+  {"task_id":"023","task_name":"Inbox Cleanup","difficulty":1,"duration_mins":20,"category":"Admin","deadline":"2026-03-23T15:00:00Z","is_completed":true,"energy_at_completion":3},
+  {"task_id":"024","task_name":"Sketch Ideas","difficulty":3,"duration_mins":40,"category":"Creative","deadline":"2026-03-23T20:30:00Z","is_completed":true,"energy_at_completion":6},
+
+  {"task_id":"025","task_name":"Jogging","difficulty":3,"duration_mins":30,"category":"Physical","deadline":"2026-03-22T06:30:00Z","is_completed":true,"energy_at_completion":9},
+  {"task_id":"026","task_name":"Leetcode Problems","difficulty":5,"duration_mins":90,"category":"Deep Work","deadline":"2026-03-22T10:00:00Z","is_completed":true,"energy_at_completion":8},
+  {"task_id":"027","task_name":"Social Media Check","difficulty":1,"duration_mins":15,"category":"Admin","deadline":"2026-03-22T14:30:00Z","is_completed":true,"energy_at_completion":2},
+  {"task_id":"028","task_name":"Video Editing","difficulty":4,"duration_mins":60,"category":"Creative","deadline":"2026-03-22T19:30:00Z","is_completed":true,"energy_at_completion":6},
+
+  {"task_id":"029","task_name":"Meditation","difficulty":1,"duration_mins":15,"category":"Wellness","deadline":"2026-03-21T07:00:00Z","is_completed":true,"energy_at_completion":7},
+  {"task_id":"030","task_name":"App Development","difficulty":5,"duration_mins":110,"category":"Deep Work","deadline":"2026-03-21T09:30:00Z","is_completed":true,"energy_at_completion":9},
+  {"task_id":"031","task_name":"Notes Cleanup","difficulty":1,"duration_mins":20,"category":"Admin","deadline":"2026-03-21T15:30:00Z","is_completed":true,"energy_at_completion":3},
+  {"task_id":"032","task_name":"Podcast Listening","difficulty":2,"duration_mins":40,"category":"Learning","deadline":"2026-03-21T21:00:00Z","is_completed":true,"energy_at_completion":5},
+
+  {"task_id":"033","task_name":"Skipping Rope","difficulty":2,"duration_mins":20,"category":"Physical","deadline":"2026-03-20T06:30:00Z","is_completed":true,"energy_at_completion":8},
+  {"task_id":"034","task_name":"Debugging Code","difficulty":5,"duration_mins":90,"category":"Deep Work","deadline":"2026-03-20T10:30:00Z","is_completed":true,"energy_at_completion":8},
+  {"task_id":"035","task_name":"Email Sorting","difficulty":1,"duration_mins":15,"category":"Admin","deadline":"2026-03-20T14:30:00Z","is_completed":true,"energy_at_completion":3},
+  {"task_id":"036","task_name":"Read Articles","difficulty":2,"duration_mins":30,"category":"Learning","deadline":"2026-03-20T20:00:00Z","is_completed":true,"energy_at_completion":5},
+
+  {"task_id":"037","task_name":"Walking","difficulty":1,"duration_mins":25,"category":"Physical","deadline":"2026-03-19T07:30:00Z","is_completed":true,"energy_at_completion":7},
+  {"task_id":"038","task_name":"Research Work","difficulty":5,"duration_mins":100,"category":"Deep Work","deadline":"2026-03-19T09:30:00Z","is_completed":true,"energy_at_completion":9},
+  {"task_id":"039","task_name":"Clean Desk","difficulty":1,"duration_mins":10,"category":"Admin","deadline":"2026-03-19T14:00:00Z","is_completed":true,"energy_at_completion":2},
+  {"task_id":"040","task_name":"Watch Course","difficulty":3,"duration_mins":50,"category":"Learning","deadline":"2026-03-19T20:30:00Z","is_completed":true,"energy_at_completion":6},
+
+  {"task_id":"041","task_name":"Pushups","difficulty":2,"duration_mins":15,"category":"Physical","deadline":"2026-03-18T06:45:00Z","is_completed":true,"energy_at_completion":8},
+  {"task_id":"042","task_name":"System Coding","difficulty":5,"duration_mins":90,"category":"Deep Work","deadline":"2026-03-18T09:30:00Z","is_completed":true,"energy_at_completion":9},
+  {"task_id":"043","task_name":"Check Notifications","difficulty":1,"duration_mins":10,"category":"Admin","deadline":"2026-03-18T15:00:00Z","is_completed":true,"energy_at_completion":3},
+  {"task_id":"044","task_name":"Brainstorm Ideas","difficulty":3,"duration_mins":40,"category":"Creative","deadline":"2026-03-18T19:00:00Z","is_completed":true,"energy_at_completion":6},
+
+  {"task_id":"045","task_name":"Stretch Routine","difficulty":2,"duration_mins":20,"category":"Physical","deadline":"2026-03-17T07:00:00Z","is_completed":true,"energy_at_completion":7},
+  {"task_id":"046","task_name":"Build Feature","difficulty":5,"duration_mins":100,"category":"Deep Work","deadline":"2026-03-17T10:00:00Z","is_completed":true,"energy_at_completion":8},
+  {"task_id":"047","task_name":"Inbox Zero","difficulty":1,"duration_mins":20,"category":"Admin","deadline":"2026-03-17T14:30:00Z","is_completed":true,"energy_at_completion":3},
+  {"task_id":"048","task_name":"Music Practice","difficulty":3,"duration_mins":45,"category":"Creative","deadline":"2026-03-17T21:00:00Z","is_completed":true,"energy_at_completion":6},
+
+  {"task_id":"049","task_name":"Light Jog","difficulty":2,"duration_mins":25,"category":"Physical","deadline":"2026-03-16T06:30:00Z","is_completed":true,"energy_at_completion":8},
+  {"task_id":"050","task_name":"Problem Solving","difficulty":5,"duration_mins":90,"category":"Deep Work","deadline":"2026-03-16T09:30:00Z","is_completed":true,"energy_at_completion":9},
+  {"task_id":"051","task_name":"Sort Files","difficulty":1,"duration_mins":15,"category":"Admin","deadline":"2026-03-16T15:00:00Z","is_completed":true,"energy_at_completion":3},
+  {"task_id":"052","task_name":"Watch Documentary","difficulty":2,"duration_mins":60,"category":"Learning","deadline":"2026-03-16T20:30:00Z","is_completed":true,"energy_at_completion":5}
+
+]

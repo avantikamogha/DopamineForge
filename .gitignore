@@ -1,0 +1,14 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+env/
+.env
+
+# Mac
+.DS_Store
+
+# Keys (Safety first!)
+secrets.json
+*.log
