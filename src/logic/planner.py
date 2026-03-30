@@ -2,9 +2,7 @@ import json
 import os
 import re
 
-import google.api_core.exceptions as api_exceptions
-import google.genai as genai
-
+from openai import OpenAI, APIError, RateLimitError
 from ..logic.prompts import SYSTEM_PROMPT
 from tenacity import retry, stop_after_attempt, wait_exponential, retry_if_exception_type
 
@@ -36,10 +34,10 @@ def _extract_json_from_text(text):
 @retry(
     stop=stop_after_attempt(3),
     wait=wait_exponential(multiplier=1, min=2, max=10),
-    retry=retry_if_exception_type(api_exceptions.ResourceExhausted)
+    retry=retry_if_exception_type(RateLimitError)
 )
 def generate_smart_schedule(tasks, energy_forecast):
-    """Generate a smart schedule using Gemini-1.5-flash.
+    """Generate a smart schedule using GitHub Models API with gpt-4o-mini.
 
     Args:
       tasks: list of dicts with keys task_name, difficulty, duration.
@@ -48,7 +46,10 @@ def generate_smart_schedule(tasks, energy_forecast):
     Returns:
       A Python list of dictionaries representing scheduled tasks.
     """
-    client = genai.Client(api_key=os.getenv("GOOGLE_API_KEY"))
+    client = OpenAI(
+        base_url="https://models.inference.ai.azure.com",
+        api_key=os.environ.get("GITHUB_TOKEN")
+    )
 
     user_prompt = (
         f"Generate the schedule for the following data:\n"
@@ -57,23 +58,21 @@ def generate_smart_schedule(tasks, energy_forecast):
     )
 
     try:
-        response = client.models.generate_content(
-            model="gemini-1.5-flash",
-            contents=user_prompt,
-            config={
-                'system_instruction': SYSTEM_PROMPT
-            }
+        response = client.chat.completions.create(
+            model="gpt-4o-mini",
+            messages=[
+                {"role": "system", "content": SYSTEM_PROMPT},
+                {"role": "user", "content": user_prompt}
+            ]
         )
-    except api_exceptions.DeadlineExceeded as exc:
-        raise TimeoutError("Generative AI request timed out") from exc
-    except api_exceptions.ServiceUnavailable as exc:
-        raise TimeoutError("Generative AI service unavailable") from exc
-    except api_exceptions.GoogleAPICallError as exc:
-        raise RuntimeError(f"Generative AI API call failed: {exc}") from exc
+    except RateLimitError as exc:
+        raise TimeoutError("API rate limit exceeded") from exc
+    except APIError as exc:
+        raise RuntimeError(f"API call failed: {exc}") from exc
 
-    model_text = getattr(response, "text", None)
+    model_text = response.choices[0].message.content
     if model_text is None:
-        raise RuntimeError("Generative AI response is missing text")
+        raise RuntimeError("API response is missing text")
 
     parsed = _extract_json_from_text(model_text)
 

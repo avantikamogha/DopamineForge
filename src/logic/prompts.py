@@ -7,10 +7,12 @@ INPUT DATA:
 
 SCHEDULING ALGORITHM:
 1. FILTER: Ignore all tasks where "is_completed" is true. If no tasks remain, return an empty JSON array [].
-2. MATCHING LOGIC: 
-   - Difficulty 5: High Energy (8-10) slots only.
-   - Difficulty 3-4: Mid-High Energy (6-7) slots.
-   - Difficulty 1-2: Low Energy (1-5) slots.
+2. MATCHING LOGIC (STRICT): 
+   - Difficulty 5: High Energy (8-10) only. If Energy < 8, label "Suboptimal".
+   - Difficulty 3-4: Mid-High Energy (6-7). If Energy < 6, label "Suboptimal".
+   - Difficulty 1-2: Low Energy (1-5). 
+   - CRASH RULE: If Energy is 1 or 2, ALWAYS label "Suboptimal" regardless of Difficulty, and add a 'forge_note' about an energy crash or a quick rest.
+   - STATUS RULE: Only use "Perfect Match" if Energy is 3 or higher AND matches the difficulty tier.
 3. TIME CALCULATION: Start scheduling from the first available energy slot. Use "duration_mins" to define the "slot" range.
 4. FLOW: After every 90 minutes of "work", insert a 10-minute "Dopamine Break" (type: "break"). Give it a unique "task_id" like "break_1", "break_2".
 5. OUTPUT: Return ONLY a valid JSON array. No markdown, no "Here is your schedule" text.
