@@ -3,7 +3,8 @@ import os
 import re
 
 from openai import OpenAI, APIError, RateLimitError
-from ..logic.prompts import SYSTEM_PROMPT
+from ..logic.prompts import SYSTEM_PROMPT 
+from ..utils.rewards import DOPAMINE_MENU
 from tenacity import retry, stop_after_attempt, wait_exponential, retry_if_exception_type
 
 
@@ -36,6 +37,7 @@ def _extract_json_from_text(text):
     wait=wait_exponential(multiplier=1, min=2, max=10),
     retry=retry_if_exception_type(RateLimitError)
 )
+
 def generate_smart_schedule(tasks, energy_forecast):
     """Generate a smart schedule using GitHub Models API with gpt-4o-mini.
 
@@ -51,6 +53,8 @@ def generate_smart_schedule(tasks, energy_forecast):
         api_key=os.environ.get("GITHUB_TOKEN")
     )
 
+    full_system_instruction = f"{SYSTEM_PROMPT}\n\nREWARDS_MENU: {json.dumps(DOPAMINE_MENU)}"
+
     user_prompt = (
         f"Generate the schedule for the following data:\n"
         f"Tasks: {json.dumps(tasks)}\n"
@@ -61,14 +65,15 @@ def generate_smart_schedule(tasks, energy_forecast):
         response = client.chat.completions.create(
             model="gpt-4o-mini",
             messages=[
-                {"role": "system", "content": SYSTEM_PROMPT},
+                # 2. UPDATE: Pass the 'Master Instruction' here
+                {"role": "system", "content": full_system_instruction},
                 {"role": "user", "content": user_prompt}
-            ]
+            ],
+            temperature=0.1 # 3. NEW: Keep it low so the AI doesn't "hallucinate" new breaks
         )
-    except RateLimitError as exc:
-        raise TimeoutError("API rate limit exceeded") from exc
-    except APIError as exc:
-        raise RuntimeError(f"API call failed: {exc}") from exc
+    except Exception as e:
+        # ... your error handling ...
+        raise e
 
     model_text = response.choices[0].message.content
     if model_text is None:

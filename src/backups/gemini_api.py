@@ -7,6 +7,20 @@ import google.generativeai as genai
 from tenacity import retry, stop_after_attempt, wait_exponential, retry_if_exception_type
 
 from ..logic.prompts import SYSTEM_PROMPT
+# Inside src/engine/predictor.py
+
+from ..utils.rewards import DOPAMINE_MENU  # <--- Add this import
+
+def generate_smart_schedule(tasks, energy_forecast):
+    # ... (Keep genai.configure)
+
+    # RE-SYNC: Give Gemini the same rules and menu as the Planner
+    full_instruction = f"{SYSTEM_PROMPT}\n\nREWARDS_MENU: {json.dumps(DOPAMINE_MENU)}"
+
+    model = genai.GenerativeModel(
+        "gemini-3-flash-preview",
+        system_instruction=full_instruction, # <--- Use the synced instruction
+    )
 
 
 def _extract_json_from_text(text):

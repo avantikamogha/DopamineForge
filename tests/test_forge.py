@@ -4,22 +4,20 @@ import sys
 import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
+# Scenario: A Hard Task followed by a Low Energy window
 tasks = [
-    {
-        "task_id": "DEV_999", 
-        "task_name": "Emergency Backend Refactor", 
-        "difficulty": 2,        # <--- High Difficulty
-        "duration_mins": 45, 
-        "is_completed": False   # <--- MUST BE FALSE TO SHOW UP
-    }
+    {"task_id": "HARD_1", "task_name": "Complex Bug Fixing", "difficulty": 5, "duration": "90m"},
+    {"task_id": "HARD_2", "task_name": "System Architecture Design", "difficulty": 4, "duration": "60m"}
 ]
 
-# Scenario: Afternoon crash (Energy levels 1-10)
+# 2. Very Low Energy Forecast
 energy_forecast = {
-    "16:00 - 17:00": 2          # <--- Low Energy
+    "09:00 - 10:30": 2,  # Crashing
+    "10:30 - 11:30": 3   # Still Low
 }
 
-print("⚒️  Attempting to Forge with GitHub Models API... ⚒️")
+print("🧪 Testing Victory Reward & Dopamine Menu... 🧪")
+
 
 try:
     # 2. RUN THE FUNCTION
