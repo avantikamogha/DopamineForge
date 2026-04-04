@@ -1,138 +1,151 @@
-# 🎯 DopamineForge
+# DopamineForge
 
-An AI-powered productivity app that understands your energy, plans your tasks intelligently, and keeps you motivated with fun rewards.
-
----
-
-## 🚀 Overview
-
-**DopamineForge** is designed to solve a simple problem:
-
-> ❌ People plan tasks without considering their energy
-> ✅ We plan tasks *based on how you feel*
-
-Using voice journaling + AI, the app predicts your energy levels and suggests the right tasks at the right time — while rewarding you to stay consistent.
+**DopamineForge** is an AI-powered productivity assistant that optimizes task planning based on user energy levels and reinforces consistency through gamified rewards.
 
 ---
 
-## 🧠 Core Features
+## Overview
 
-### 🎤 Voice Journaling
+Traditional productivity tools assume consistent performance throughout the day. In reality, human energy fluctuates.
 
-* Record your thoughts using voice input
-* Automatically converts speech → text
-* Stores entries with timestamps
+DopamineForge addresses this gap by combining:
 
----
+* Voice-based journaling
+* Energy prediction using behavioral data
+* AI-driven task recommendations
+* Gamified reward mechanisms
 
-### ⚡ Energy Prediction (AI Model)
-
-* Uses past behavior and logs
-* Predicts user energy levels throughout the day
-* Helps identify:
-
-  * 🔥 High-focus periods
-  * 😴 Low-energy periods
+The result is a system that aligns tasks with natural energy cycles, improving both efficiency and user engagement.
 
 ---
 
-### 🤖 Smart Task Planner (LLM)
+## Key Features
 
-* Suggests tasks based on:
+### Voice Journaling
 
-  * Current energy level
-  * Task difficulty
-  * Deadlines & priorities
-* Prevents burnout by aligning work with energy
+* Capture user input through voice
+* Convert speech to text in real time
+* Store entries with timestamps for analysis
 
----
+### Energy Prediction
 
-### 🎮 Dopamine Menu (Gamification)
+* Analyze historical activity and contextual signals
+* Predict current and upcoming energy levels
+* Enable adaptive task scheduling
 
-* Rewards users after completing tasks
-* Randomized “fun” rewards like:
+### Intelligent Task Planning
 
-  * 🎧 Listen to a song
-  * 🍫 Snack break
-  * 🎮 Quick game
-* Encourages consistency and motivation
+* Recommend tasks based on:
 
----
+  * Predicted energy levels
+  * Task difficulty and category
+  * Deadlines and priorities
+* Reduce cognitive overload and improve task alignment
 
-## 🔄 How It Works
+### Gamification Layer (Dopamine Menu)
 
-1. 🎤 User speaks (journal entry)
-2. 🧠 AI predicts current energy level
-3. 🤖 LLM suggests the best task to do
-4. ✅ User completes task
-5. 🎉 Reward unlocked from Dopamine Menu
+* Provide rewards upon task completion
+* Randomized incentives to maintain engagement
+* Reinforce positive productivity behavior
 
 ---
 
-## 🧱 Tech Stack
+## System Workflow
+
+1. User records a voice journal entry
+2. Speech is transcribed and stored
+3. Energy prediction model evaluates user state
+4. Task recommendation engine suggests optimal tasks
+5. User completes task
+6. Reward is generated and presented
+
+---
+
+## Architecture
+
+**Frontend**
+
+* User interface for journaling, task display, and rewards
+
+**Backend**
+
+* Handles data processing, storage, and API orchestration
+
+**AI Components**
+
+* Energy Prediction Model (behavioral pattern-based)
+* LLM-based Task Recommendation Engine
+
+**Database**
+
+* Stores user logs, tasks, and interaction history
+
+---
+
+## Technology Stack
 
 * **Frontend:** React
-* **Backend:** Python
+* **Backend:** Node.js / Python
+* **Database:** Firebase
+* **Speech-to-Text:** Web Speech API / Whisper
 * **AI/ML:**
 
-  * Energy Prediction: Basic ML / heuristic model
-  * Task Planning: LLM (OpenAI / Gemini)
-* **Speech-to-Text:** Web Speech API / Whisper
+  * Energy Prediction: heuristic or lightweight ML model
+  * Task Planning: LLM (e.g., OpenAI / Gemini)
 
 ---
 
-## 📊 Sample Workflow
+## Sample Interaction
 
 ```json
 {
   "input": "I feel tired and unfocused",
   "predicted_energy": 3,
-  "suggested_task": "Email Cleanup",
-  "reward": "🎧 Listen to a song"
+  "recommended_task": "Email Cleanup",
+  "reward": "Listen to a song"
 }
 ```
 
 ---
 
-## 🎯 Key Idea
+## Design Principles
 
-> “Work *with* your brain, not against it.”
-
-Instead of forcing productivity, DopamineForge adapts to your natural energy cycles and makes productivity enjoyable.
-
----
-
-## 🚀 Future Improvements
-
-* 📈 Personalized energy models per user
-* 🔥 Streaks, XP, and leveling system
-* 🧠 Mood detection from voice tone
-* 📅 Calendar integration
-* 🤝 Team productivity insights
+* **Energy-Aware Productivity**: Align tasks with cognitive capacity
+* **Simplicity First**: Focus on usability over complexity
+* **Behavioral Reinforcement**: Use rewards to sustain engagement
+* **Modular Architecture**: Enable easy iteration and scaling
 
 ---
 
-## 🏁 Demo Goal
+## Future Enhancements
 
-A working prototype where:
-
-✅ User speaks
-✅ Energy is predicted
-✅ Tasks are suggested intelligently
-✅ Rewards are given after completion
-
----
-
-## 💡 Inspiration
-
-Built on the idea that:
-
-* Productivity is not just discipline
-* It’s **energy management + motivation loops**
+* Personalized energy modeling using user-specific data
+* Streaks, experience points (XP), and leveling systems
+* Mood and sentiment detection from voice input
+* Calendar and task management integrations
+* Advanced analytics dashboard
 
 ---
 
-## ⭐ Final Note
+## Demo Objective
 
-DopamineForge is not just a productivity tool —
-it’s a system that **makes productivity feel rewarding.**
+Deliver a functional prototype demonstrating:
+
+* Voice input processing
+* Energy prediction
+* Context-aware task recommendations
+* Reward-based feedback loop
+
+---
+
+## Contributors
+
+* Member 1 – UI & Integration
+* Member 2 – AI Model
+* Member 3 – LLM & Gamification
+
+---
+
+## Conclusion
+
+DopamineForge rethinks productivity by integrating behavioral insights with AI-driven decision-making. By aligning tasks with user energy and reinforcing progress through rewards, it creates a more sustainable and engaging productivity experience.
