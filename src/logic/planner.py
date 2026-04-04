@@ -2,9 +2,11 @@ import json
 import os
 import re
 
+from django import tasks
+from django import tasks
 from openai import OpenAI, APIError, RateLimitError
-from ..logic.prompts import SYSTEM_PROMPT 
-from ..utils.rewards import DOPAMINE_MENU
+from logic.prompts import SYSTEM_PROMPT
+from utils.rewards import DOPAMINE_MENU
 from tenacity import retry, stop_after_attempt, wait_exponential, retry_if_exception_type
 
 
@@ -53,21 +55,26 @@ def generate_smart_schedule(tasks, energy_forecast):
         api_key=os.environ.get("GITHUB_TOKEN")
     )
 
-    full_system_instruction = f"{SYSTEM_PROMPT}\n\nREWARDS_MENU: {json.dumps(DOPAMINE_MENU)}"
+    full_instruction = SYSTEM_PROMPT.replace("{REWARDS_MENU}", json.dumps(DOPAMINE_MENU))
+    # Check if tasks is a string (from the textarea) or a list
+    if isinstance(tasks, str):
+        user_content = f"User Brain Dump: {tasks}. Extract specific tasks and schedule them."
+    else:
+        user_content = f"Tasks: {json.dumps(tasks)}"
 
+    # In planner.py
     user_prompt = (
-        f"Generate the schedule for the following data:\n"
-        f"Tasks: {json.dumps(tasks)}\n"
-        f"Energy forecast: {json.dumps(energy_forecast)}"
+        f"ACTUAL USER INPUT TO PROCESS:\n"
+        f"'{tasks}'\n\n"
+        f"Current Energy Context: {json.dumps(energy_forecast)}\n"
+        f"Constraint: Even if the input is short, expand it into a 48-hour plan."
     )
-
     try:
         response = client.chat.completions.create(
             model="gpt-4o-mini",
             messages=[
-                # 2. UPDATE: Pass the 'Master Instruction' here
-                {"role": "system", "content": full_system_instruction},
-                {"role": "user", "content": user_prompt}
+                {"role": "system", "content": full_instruction},
+                {"role": "user", "content": f"INPUT: {tasks}\nENERGY: {json.dumps(energy_forecast)}"}
             ],
             temperature=0.1 # 3. NEW: Keep it low so the AI doesn't "hallucinate" new breaks
         )

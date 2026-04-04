@@ -1,8 +1,15 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 
-const EnergyDump = ({ onBack }) => {
+const EnergyDump = ({ onBack, onComplete, isLoading }) => {
   const [text, setText] = useState("");
+
+const handleSync = () => {
+  // Pass the raw text directly to the onComplete prop from App.jsx
+  if (onComplete) {
+    onComplete(text, { status: "raw_dump" });
+  }
+};
 
   return (
     <div className="pt-10 pb-12 px-6">
@@ -57,11 +64,12 @@ const EnergyDump = ({ onBack }) => {
             </div>
 
             <button 
-              disabled={!text.trim()}
+              disabled={!text.trim() || isLoading}
+              onClick={handleSync} // <--- Add this!
               className="w-full md:w-auto px-10 py-4 bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs tracking-widest uppercase rounded-2xl shadow-xl transition-all disabled:opacity-20 disabled:cursor-not-allowed transform active:scale-95"
-            >
-              Analyze & Sync Schedule
-            </button>
+          >
+              {isLoading ? "Forging..." : "Analyze & Sync Schedule"}
+          </button>
           </div>
         </motion.div>
 

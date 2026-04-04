@@ -8,6 +8,7 @@ import EnergyDump from './components/EnergyDump';
 import Dopaminemenu from './components/DopamineMenu';
 import XPTracker from './components/XPtracker';
 import Pomodoro from './components/Pomodoro';
+import FortyEightHourPlan from './components/Planner';
 
 const THEMES = {
   forge: { img: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1200&q=80", accent: "border-blue-500/50", text: "text-blue-400" },
@@ -17,7 +18,7 @@ const THEMES = {
   summer: { img: "https://images.unsplash.com/photo-1501436513145-30f24e19fcc8?auto=format&fit=crop&w=1200&q=80", accent: "border-orange-500/50", text: "text-orange-300" }
 };
 
-const FortyEightHourPlan = () => <div className="p-20 text-center dark:text-white border-2 border-dashed border-slate-200 rounded-3xl">48-Hour Smart Schedule View (Coming Soon)</div>;
+
 const WeekView = () => <div className="p-20 text-center dark:text-white border-2 border-dashed border-slate-200 rounded-3xl">Weekly Forecast View (Coming Soon)</div>;
 
 function App() {
@@ -30,6 +31,8 @@ function App() {
 
   const [view, setView] = useState('landing'); 
   const [currentXP, setCurrentXP] = useState(0);
+  const [schedule, setSchedule] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (isDark) {
@@ -40,14 +43,45 @@ function App() {
       localStorage.setItem('theme', 'light');
     }
   }, [isDark]);
+  const handleGenerateSchedule = async (tasks, energyData) => {
+    setLoading(true);
+    try {
+      const response = await fetch('http://127.0.0.1:5000/api/forge', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ tasks, energy: energyData }),
+      });
 
+      const data = await response.json();
+    
+      // --- ADD THIS LINE TO SEE THE DATA ---
+      console.log("🔥 AI DATA RECEIVED:", data);
+
+      if (data && !data.error) {
+        setSchedule(data); 
+        setView('48h');
+      }
+    } catch (error) {
+      console.error("❌ Forge failed:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
   const handleEarnXP = (amount) => setCurrentXP(prev => Math.min(prev + amount, 100));
   const navigateTo = (targetView) => { setView(targetView); window.scrollTo({ top: 0, behavior: 'smooth' }); };
 
   const renderView = () => {
     switch(view) {
-      case 'energy-dump': return <EnergyDump onBack={() => setView('landing')} onComplete={() => setView('48h')} />;
-      case '48h': return <FortyEightHourPlan />;
+      case 'energy-dump': 
+        return (
+          <EnergyDump 
+            onBack={() => setView('landing')} 
+            onComplete={(tasks, energy) => handleGenerateSchedule(tasks, energy)} 
+            isLoading={loading}
+          />
+        );
+      case '48h': 
+        return <FortyEightHourPlan schedule={schedule} />;
       case 'week': return <WeekView />;
       case 'dopamine-menu': return <Dopaminemenu onEarnXP={handleEarnXP} />;
       case 'pomodoro': return <Pomodoro activeTheme={activeTheme} themeData={THEMES[activeTheme]} />;
